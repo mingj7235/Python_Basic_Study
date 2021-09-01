@@ -77,8 +77,41 @@ get() 메소드
       get()은 key가 Dictionary에 없을 경우 None을 리턴하므로 더 유용하다. 
       key가 존재하지 않는지 체크하기 위해서는 멤버쉽연산자 in을 사용하면 되기도 하다.
 """
+print("----------------------")
+scores = {"a" : 80, "b" : 70, "c":60}
 
-scores = {"a" : 80, "b" : 70, }
+# print(scores["d"]) # 예외를 뱉는다.
+print(scores.get("d")) #none
+print(scores.get("a")) # 80
+
+# in 으로 멤버쉽연산자를 쓸수 있는 대상은 key 값만 해당한다. value는 in으로 걸리지 않는다.
+if "d" in scores:
+    print(scores["d"])
+else:
+    print("error")
+
+if "b" in scores:
+    print("yes")
+
+scores.clear() # 모두삭제 해버림
+print(scores)
+
+listTest = ["ab", "cd"]
+listTest.clear()
+print(listTest)
+
+
+# update ()
+"""
+update() 를통해 수정을 하고 추가도 가능하다. 
+"""
+tupleList = [('a', 80), ('b', 78), ('c', 40)]
+dictTest = dict(tupleList)
+
+dictTest.update({'c':70, 'b':80, 'd':95})  # update를 통해 수정 및 추가도 가능하다.
+
+print(dictTest)
+
 
 
 
