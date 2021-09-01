@@ -70,6 +70,16 @@ itemList = list(items)
 print(type(itemList))
 print(itemList[0])
 
+"""
+get() 메소드
+    - dict[key]와 비슷하다. 
+    - 하지만, dict[key]를 사용하면 key가 없을 때 에러 (keyError)를 리턴하는 반면에, 
+      get()은 key가 Dictionary에 없을 경우 None을 리턴하므로 더 유용하다. 
+      key가 존재하지 않는지 체크하기 위해서는 멤버쉽연산자 in을 사용하면 되기도 하다.
+"""
+
+scores = {"a" : 80, "b" : 70, }
+
 
 
 
