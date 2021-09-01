@@ -51,11 +51,23 @@ print(result)
 resultMul = listA * 3
 print(resultMul)
 
-print
+print("리스트 검색")
+listLetter = "This is a book that is a pencil".split()
+# for letter in listLetter:
+#     print(letter)
 
+i = listLetter.index('that') # 4
+n = listLetter.count('a') # 2
 
+# print("i:" + i + "n:" + n)
+print(i+n)
 
+print("List Comprehension")
+# [표현식 for 요소 in 컬렉션 [if 조건식] ]
 
+#n의 제곱을 구하는데, n은 0~9 까지 숫자들 중이고, 그 숫자들중에서 3의 배수인 게 n임
+ComprehensionTest = [n ** 2 for n in range(10) if n % 3 == 0]
+print(ComprehensionTest)
 
 
 
