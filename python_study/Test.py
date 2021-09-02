@@ -99,6 +99,9 @@ for n in numbers:
     print(n)
 
 
+# __init__.py 에 초기화를 해주는 것. __all__이라는 리스트 변수에 넣어줘야한다.
+from models.account import *
+bill.charge(1, 50)
 
 
 
