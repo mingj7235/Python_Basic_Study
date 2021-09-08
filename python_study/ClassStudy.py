@@ -27,6 +27,7 @@ class Rectangle:
         Rectangle.count += 1
 
 
+# 인스턴스 메서드
 def calcArea(self):
     area = self.width * self.height
     return area
@@ -52,5 +53,22 @@ Python 클래스는 기본적으로 모든 멤버가 public이라고 할 수 있
 클래스 메서드는 메서드 앞에 @classmethod라고 표시한다. 
     클래스 메서드는 정적 메서드와 비슷한데, 객체 인스턴스를 의미하는 self 대신, cls라는 클래스를 의미하는 파라미터를 전달 받는다. 
     정적 메서드는 이런 cls 파라미터를 전달받지 않는다. 
+    클래스 메서드는 이렇게 전달받은 cls 파라미터를 통해 캘래스 변수 등을 엑세스 할 수 잇다.
+    
+일반적으로, 인스턴스 데이터를 접근할 필요가 없는 경우 클래스 메서드나 정적 메서드를 사용하는데, 
+이때 보통 클래스 변수를 접근할 필요가 있을 때는 클래스 메서드를,
+이를 엑세스할 필요가 없을 때는 정적 메서드를 사용한다. 
 
 '''
+
+
+# 정적 메서드
+@staticmethod
+def isSquare(rectWidth, rectHeight):
+    return rectWidth == rectHeight
+
+
+# 클래스 메서드
+@classmethod
+def printCount(cls):
+    print(cls.count)
