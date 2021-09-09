@@ -8,6 +8,7 @@
 
 class Rectangle:
     count = 0  # 클래스 변수
+    square_count = 0
 
     # 초기자
     """
@@ -26,11 +27,46 @@ class Rectangle:
         self.height = height
         Rectangle.count += 1
 
+    # 인스턴스 메서드
+    def calcArea(self):
+        area = self.width * self.height
+        return area
 
-# 인스턴스 메서드
-def calcArea(self):
-    area = self.width * self.height
-    return area
+    # 정적 메서드
+    @staticmethod
+    def isSquare(rectWidth, rectHeight):
+        return rectWidth == rectHeight
+
+    # 클래스 메서드
+    @classmethod
+    def printCount(cls):
+        print(cls.count)
+
+        '''
+        Special Method (Magic Method)
+
+        - __init__ : 초기자 (Initializer)
+        - __del__ : 소멸자. 객체가 소멸될 때 실행된다.
+        - __add__ : 두개의 객체를 + 기호로 더하는 메서드
+        - __sub__ : 두개의 객체를 - 기호로 뺀다.
+        - __cmp__ : 두개의 객체를 비교한다.
+        - __str__ : 문자열로 객체를 표현한다. 
+
+        '''
+        # __add__ 메서드 예시
+
+    def __add__(self, other):
+        obj = Rectangle(self.width + other.width, self.height + other.height)
+        return obj
+
+r1 = Rectangle(10, 5)
+r2 = Rectangle(20, 15)
+r3 = r1 + r2  # __add__() 가 호출된다.
+
+print(r3.width)
+print(r3.height)
+r3_range = r3.width * r3.height
+print(r3_range)
 
 
 """
@@ -58,17 +94,59 @@ Python 클래스는 기본적으로 모든 멤버가 public이라고 할 수 있
 일반적으로, 인스턴스 데이터를 접근할 필요가 없는 경우 클래스 메서드나 정적 메서드를 사용하는데, 
 이때 보통 클래스 변수를 접근할 필요가 있을 때는 클래스 메서드를,
 이를 엑세스할 필요가 없을 때는 정적 메서드를 사용한다. 
+'''
+
+'''
+isSquare()는 정적 메서드 -> cls 파라미터를 전달받지 않고, 메서드 내에서 클래스 변수를 사용하지 않고 있음
+'''
+
+'''
+printCount() 메서드는 클래스 메소드 -> cls 파라미터를 전달 받고, 메서드 내에서 클래스 변수 count를 사용하고 있음 
+                                cls 를 통해 count 변수를 사용할 수 있음. 
+'''
+
+'''
+클래스 인스턴스의 생성과 사용
+
+- 클래스를 사용하기 위해서는 먼저 클래스로부터 인스턴스를 생성해야함. 이건 뭐..JAVA랑 같네 
+- 생성 : 객체변수명 = 클래스명() 
+- __init()__ 함수가 있고, 파라미터가 지정되어있다면, 괄호안에 파라미터로 생성 가능. (Java의 생성자 초기화..?)
+- -> 이렇게 전달된 파라미터들은 Initializer에서 사용된다. 
 
 '''
 
+r = Rectangle (2, 3)
 
-# 정적 메서드
-@staticmethod
-def isSquare(rectWidth, rectHeight):
-    return rectWidth == rectHeight
+area = r.calcArea()
+print(f"area = {area}")
+
+r.width = 10
+print(f"width = {r.width}")
+
+r.height = 20
+print(f"height = {r.height}")
+print(f"area = {area}")
+print(f"c_area ={r.calcArea()}")
+
+r.count = 10
+print(Rectangle.count)
+print(r.count)
+
+'''
+Python 에서는 '클래스명.클래스변수명 or 객체명.클래스변수명' 둘다 허용한다. -> 혼란 초래할 수 있음. 
+'''
 
 
-# 클래스 메서드
-@classmethod
-def printCount(cls):
-    print(cls.count)
+
+
+# 테스트
+square = Rectangle.isSquare(5, 5)
+print(square)  # true
+
+rect1 = Rectangle(5, 5)
+rect2 = Rectangle(2, 6)
+rect3 = Rectangle(2, 6)
+rect4 = Rectangle(2, 6)
+
+
+
